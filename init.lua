@@ -1,0 +1,8 @@
+require('config')
+require('plugins')
+require('plugins.colorscheme')
+require('plugins.telescope')
+require('plugins.lsp')
+require('plugins.mason')
+require('plugins.lualine')
+require('plugins.completion')
