@@ -1,4 +1,3 @@
--- UI
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
@@ -39,3 +38,4 @@ vim.opt.splitright = true
 -- Other
 vim.opt.mouse = "a"
 vim.opt.completeopt = "menu,menuone,noselect"
+
