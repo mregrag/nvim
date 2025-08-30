@@ -9,10 +9,7 @@ vim.g.maplocalleader = " "
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 
--- Better paste
 vim.keymap.set("v", "p", '"_dP', opts)
-
-vim.keymap.set("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- Better navigation
 vim.keymap.set("n", "n", "nzzzv", opts)
@@ -25,12 +22,10 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- This is going to get me cancelled
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set('t', 'jk', [[<C-\><C-n>]])
 vim.keymap.set("n", "<leader>e", ":Ex<CR>")
 vim.keymap.set("n", "<leader>w", ":w<CR>")
-vim.keymap.set("n", "<leader>q", ":q<CR>")
 vim.keymap.set("n", "<leader>x", ":x<CR>")
 
 vim.keymap.set("n", "<leader>cd", function()

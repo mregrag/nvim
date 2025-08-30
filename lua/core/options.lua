@@ -38,4 +38,3 @@ vim.opt.splitright = true
 -- Other
 vim.opt.mouse = "a"
 vim.opt.completeopt = "menu,menuone,noselect"
-

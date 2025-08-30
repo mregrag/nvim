@@ -1,0 +1,32 @@
+local ok, lualine = pcall(require, "lualine")
+if not ok then
+    return
+end
+
+lualine.setup({
+    options = {
+        theme = "onedark", -- Match your OneDark theme
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
+        icons_enabled = true,
+        globalstatus = true, -- Single statusline for all windows
+    },
+    sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_c = { { "filename", path = 1 } }, -- path=1 shows relative path
+        lualine_x = { "encoding", "fileformat", "filetype" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { "filename" },
+        lualine_x = { "location" },
+        lualine_y = {},
+        lualine_z = {},
+    },
+    extensions = { "nvim-tree", "toggleterm", "fugitive" },
+})
+
