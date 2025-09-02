@@ -1,3 +1,4 @@
+
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
@@ -16,11 +17,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
--- Auto format on save (only for web-related files)
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = vim.api.nvim_create_augroup("web_format_on_save", { clear = true }),
-    pattern = { "*.js", "*.ts", "*.tsx", "*.jsx", "*.json", "*.css", "*.scss", "*.html" },
-    callback = function()
-        vim.lsp.buf.format({ async = false })
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client and client.server_capabilities.completionProvider then
+            client.server_capabilities.completionProvider.triggerCharacters = { ".", ":", "(", "[", " " }
+        end
     end,
 })

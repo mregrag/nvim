@@ -1,11 +1,12 @@
+
 require("core.options")
 require("core.keymaps")
 require("core.plugins")
 require("core.autocmds")
 
-require("plugins.mason")
 require("plugins.cmp")
 require("plugins.lsp")
+require("plugins.mason")
 require("plugins.treesitter")
 require("plugins.telescope")
 require("plugins.catppuccin")

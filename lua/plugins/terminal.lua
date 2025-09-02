@@ -1,9 +1,4 @@
-local ok, toggleterm = pcall(require, "toggleterm")
-if not ok then
-    return
-end
-
-toggleterm.setup({
+require("toggleterm").setup({
     size = 15,
     open_mapping = [[<C-\>]], -- Toggle terminal with Ctrl+\
     hide_numbers = true,
@@ -21,8 +16,8 @@ toggleterm.setup({
     },
 })
 
-local term_opts = { noremap = true, silent = true }
-vim.keymap.set('t', 'jk', [[<C-\><C-n>]], term_opts)
+local opts = { noremap = true, silent = true }
+vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
 
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = Terminal:new({
@@ -31,29 +26,9 @@ local lazygit = Terminal:new({
     direction = "float",
     float_opts = { border = "curved" },
 })
+
 function _LAZYGIT_TOGGLE()
     lazygit:toggle()
-end
-
-local node = Terminal:new({
-    cmd = "node",
-    hidden = true,
-    direction = "float",
-    float_opts = { border = "curved" },
-})
-function _NODE_TOGGLE()
-    node:toggle()
-end
-
--- Python REPL terminal
-local python = Terminal:new({
-    cmd = "python3",
-    hidden = true,
-    direction = "float",
-    float_opts = { border = "curved" },
-})
-function _PYTHON_TOGGLE()
-    python:toggle()
 end
 
 local map = vim.keymap.set
@@ -61,6 +36,3 @@ local opts = { noremap = true, silent = true }
 
 map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", opts)       -- Default terminal
 map("n", "<leader>tg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", opts) -- Git UI
-map("n", "<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", opts)    -- Node REPL
-map("n", "<leader>tp", "<cmd>lua _PYTHON_TOGGLE()<cr>", opts)  -- Python REPL
-
