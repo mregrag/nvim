@@ -2,7 +2,7 @@ require("core.options")
 require("core.keymaps")
 require("core.plugins")
 require("core.autocmds")
-
+require("plugins.cmp")
 require("plugins.lsp")
 require("plugins.oil")
 require("plugins.treesitter")
