@@ -5,9 +5,6 @@ vim.pack.add({
     { src = "https://github.com/williamboman/mason-lspconfig.nvim" },
     { src = "https://github.com/hrsh7th/cmp-nvim-lsp.git" },
 
-    { src = "https://github.com/L3MON4D3/LuaSnip.git" },
-    { src = "https://github.com/rafamadriz/friendly-snippets.git" },
-
     { src = "https://github.com/nvim-lua/plenary.nvim.git" },
     { src = "https://github.com/nvim-telescope/telescope.nvim.git" },
 

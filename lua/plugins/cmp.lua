@@ -1,20 +1,25 @@
-local cmp = require("cmp")
+require("cmp").setup({
+    window = {
+        completion = require("cmp").config.window.bordered({
+            border = "rounded", 
+            winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder",
+            scrollbar = false,
+            side_padding = 1,
+        }),
+        documentation = require("cmp").config.window.bordered({
+            border = "single",
+            winhighlight = "Normal:CmpDoc",
+        }),
+    },
 
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      require("luasnip").lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-  }),
-  sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-  }),
+    mapping = require("cmp").mapping.preset.insert({
+        ["<C-b>"] = require("cmp").mapping.scroll_docs(-4),
+        ["<C-f>"] = require("cmp").mapping.scroll_docs(4),
+        ["<CR>"] = require("cmp").mapping.confirm({ select = true }),
+    }),
+    sources = require("cmp").config.sources({
+        { name = "nvim_lsp" },
+        { name = "buffer" },
+        { name = "path" },
+    }),
 })
-
