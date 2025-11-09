@@ -1,4 +1,3 @@
-
 require("core.options")
 require("core.keymaps")
 require("core.plugins")
@@ -6,9 +5,7 @@ require("core.autocmds")
 
 require("plugins.cmp")
 require("plugins.lsp")
-require("plugins.mason")
+require("plugins.oil")
 require("plugins.treesitter")
 require("plugins.telescope")
-require("plugins.catppuccin")
-require("plugins.terminal")
-require("plugins.lualine")
+require("plugins.onedark")

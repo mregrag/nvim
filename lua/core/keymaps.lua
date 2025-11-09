@@ -24,11 +24,11 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set('t', 'jk', [[<C-\><C-n>]])
-vim.keymap.set("n", "<leader>e", ":Ex<CR>")
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>x", ":x<CR>")
+vim.keymap.set("n", "-", "<CMD>Oil<CR>")
 
-vim.keymap.set("n", "<leader>cd", function()
+vim.keymap.set("n", "<leader>nv", function()
     vim.cmd("edit " .. vim.fn.stdpath("config"))
 end, { desc = "Open Neovim config directory" })
 
