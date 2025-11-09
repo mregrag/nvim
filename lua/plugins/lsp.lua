@@ -1,61 +1,42 @@
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
+
 vim.diagnostic.config({
     virtual_text = { spacing = 4, prefix = "●" },
     signs = true,
-    underline = true,
     update_in_insert = false,
     severity_sort = true,
     float = { border = "rounded", source = "always" },
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(ev)
-        local buf = ev.buf
-        local map = function(mode, lhs, rhs)
-            vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, buffer = buf })
-        end
-        vim.bo[buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-        map("n", "gd", vim.lsp.buf.definition)
-        map("n", "K", vim.lsp.buf.hover)
-        map("n", "gi", vim.lsp.buf.implementation)
-        map("n", "<leader>rn", vim.lsp.buf.rename)
-        map("n", "<leader>ca", vim.lsp.buf.code_action)
-        map("n", "gr", vim.lsp.buf.references)
-        map("n", "[d", vim.diagnostic.goto_prev)
-        map("n", "]d", vim.diagnostic.goto_next)
-        map("n", "<leader>e", vim.diagnostic.open_float)
-        map("n", "<leader>q", vim.diagnostic.setloclist)
-    end,
-})
+local on_attach = function(client, bufnr)
+    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+    vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-pcall(function()
-    capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-end)
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+    vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+end
 
-require("mason").setup()
+mason.setup()
+mason_lspconfig.setup()
+
+for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
+    local server = vim.lsp.config[server_name]
+    if server and server.setup then
+        server.setup({
+            on_attach = on_attach,
+        })
+        vim.lsp.enable(server_name)
+    end
+end
 
 
-vim.lsp.config("ts_ls", {
-    capabilities = capabilities,
-})
-vim.lsp.enable("ts_ls")
-
-vim.lsp.config("html", {
-    capabilities = capabilities,
-})
-vim.lsp.enable("html")
-
-vim.lsp.config("tailwindcss", {
-    capabilities = capabilities,
-})
-vim.lsp.enable("tailwindcss")
-
-vim.lsp.config("eslint", {
-    capabilities = capabilities,
-})
-vim.lsp.enable("eslint")
-
-vim.lsp.config("yamlls", {
-    capabilities = capabilities,
-})
-vim.lsp.enable("yamlls")

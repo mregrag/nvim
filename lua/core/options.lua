@@ -37,4 +37,5 @@ vim.opt.splitright = true
 
 -- Other
 vim.opt.mouse = "a"
-vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
+vim.opt.pumheight = 10

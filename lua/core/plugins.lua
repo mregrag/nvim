@@ -1,6 +1,5 @@
 vim.pack.add({
     -- LSP server defaults + Mason installer/bridge
-    { src = "https://github.com/neovim/nvim-lspconfig.git" },
     { src = "https://github.com/williamboman/mason.nvim" },
     { src = "https://github.com/williamboman/mason-lspconfig.nvim" },
 
