@@ -1,4 +1,3 @@
--- Diagnostics
 vim.diagnostic.config({
     virtual_text = { spacing = 4, prefix = "●" },
     signs = true,
@@ -34,9 +33,6 @@ pcall(function()
 end)
 
 require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = { "ts_ls", "html", "tailwindcss", "eslint", "yamlls" }, -- ✅ added yamlls
-})
 
 
 vim.lsp.config("ts_ls", {
