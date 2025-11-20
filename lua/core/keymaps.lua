@@ -20,7 +20,15 @@ vim.keymap.set("t", "jk", [[<C-\><C-n>]])
 
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>x", ":x<CR>")
-vim.keymap.set("n", "-", "<CMD>Oil<CR>")
+vim.keymap.set("n", "<leader>e", ":Ex<CR>")
+
+
+vim.keymap.set('n', '<C-k>', ':resize +2<CR>')
+vim.keymap.set('n', '<C-j>', ':resize -2<CR>')
+vim.keymap.set('n', '<C-l>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<C-h>', ':vertical resize +2<CR>')
+
+
 
 vim.keymap.set("n", "<leader>nv", function()
     vim.cmd("edit " .. vim.fn.stdpath("config"))
