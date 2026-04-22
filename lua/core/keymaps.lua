@@ -1,6 +1,7 @@
 vim.g.mapleader = " " -- Setting space as your Leader key
 
 local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
 
 -- General keymaps
 --
@@ -16,8 +17,8 @@ keymap.set("n", "<leader>w", ":w<CR>")
 keymap.set("n", "<leader>x", ":x<CR>")
 keymap.set("n", "<leader>e", ":Ex<CR>")
 
-
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set("v", "p", '"_dP', opts)
+vim.keymap.set({"n", "v"}, "<leader>y", [["+Y]])
 
 
 keymap.set('n', '<C-k>', ':resize +2<CR>')
@@ -26,4 +27,3 @@ keymap.set('n', '<C-l>', ':vertical resize -2<CR>')
 keymap.set('n', '<C-h>', ':vertical resize +2<CR>')
 
 keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
