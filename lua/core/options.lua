@@ -1,26 +1,26 @@
 local opt = vim.opt
 
 -- Line numbers
-opt.relativenumber = true
-opt.number = true
+vim.opt.relativenumber = true
+vim.opt.number = true
 
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-opt.autoindent = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
 vim.opt.wrap = false
 vim.opt.linebreak = true
 
 -- Search
-opt.ignorecase = true
-opt.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- UI
-opt.termguicolors = true
-opt.cursorline = true -- Highlights the current line
-opt.signcolumn = "yes"
-opt.splitright = true
-opt.splitbelow = true
+vim.opt.termguicolors = true
+vim.opt.cursorline = false
+vim.opt.signcolumn = "yes"
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Files
 vim.opt.swapfile = false
@@ -29,4 +29,8 @@ vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand("~/.cache/nvim/undo")
 
 vim.opt.wildmode = "longest:full,full"
-vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
+vim.opt.complete:append('o')
+vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
+
+vim.o.pumheight = 5
+vim.o.pumborder ='rounded'
